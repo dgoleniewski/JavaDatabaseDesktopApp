@@ -3,13 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package javadatabasedesktopapp;
+package start;
 
 /**
  *
  * @author Goleniewski
  */
-public class JavaDatabaseDesktopApp {
+public class Start {
 
     /**
      * @param args the command line arguments
