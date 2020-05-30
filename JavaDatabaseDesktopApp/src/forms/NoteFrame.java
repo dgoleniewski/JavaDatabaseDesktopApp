@@ -19,24 +19,31 @@ public class NoteFrame extends javax.swing.JFrame {
     /**
      * Creates new form NewNote
      */
-    public NoteFrame() {
+    public NoteFrame(int userId) {
         initComponents();
         db = new Database();
         state = State.scroll;
-        notes = db.getNotes();
+        notes = db.getNotes(userId);
+        this.userId = userId;
         position = 0;
-        this.setNote();
         this.setView();
+        this.setNote();
     }
     
     public void setNote(){
-        Note note = (Note)notes.get(position);
-        id = note.getId();
-        idLabel.setText("ID: " + id);
-        dateLabel.setText("Creation date: " + note.getCreationdate().toString());
-        titleTextField.setText(note.getTitle());
-        noteTextArea.setText(note.getNote());
-        importanceSpinner.setValue(note.getImportance());
+        try{
+            Note note = (Note)notes.get(position);
+            id = note.getId();
+            idLabel.setText("ID: " + id);
+            dateLabel.setText("Creation date: " + note.getCreationdate().toString());
+            titleTextField.setText(note.getTitle());
+            noteTextArea.setText(note.getNote());
+            importanceSpinner.setValue(note.getImportance());
+        }
+        catch(Exception e){
+            nextButton.setEnabled(false);
+        }
+
     }
     
     public void setView(){
@@ -294,9 +301,9 @@ public class NoteFrame extends javax.swing.JFrame {
             setView();
         }
         else if(state == State.addNew){
-            db.addNote(titleTextField.getText(), noteTextArea.getText(), (int)importanceSpinner.getValue());
+            db.addNote(titleTextField.getText(), noteTextArea.getText(), (int)importanceSpinner.getValue(), userId);
             state = State.scroll;
-            notes = db.getNotes();
+            notes = db.getNotes(userId);
             position = notes.size()-1;
             setView();
             setNote();
@@ -306,7 +313,7 @@ public class NoteFrame extends javax.swing.JFrame {
     private void deleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteButtonActionPerformed
         // TODO add your handling code here:
         db.removeNote(id);
-        notes = db.getNotes();
+        notes = db.getNotes(userId);
     }//GEN-LAST:event_deleteButtonActionPerformed
 
     private void newButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newButtonActionPerformed
@@ -353,7 +360,7 @@ public class NoteFrame extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new NoteFrame().setVisible(true);
+                new NoteFrame(1).setVisible(true);
             }
         });
     }
@@ -380,4 +387,5 @@ public class NoteFrame extends javax.swing.JFrame {
     private State state;
     private int position;
     private int id;
+    private int userId;
 }

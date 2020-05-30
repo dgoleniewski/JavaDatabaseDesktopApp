@@ -17,13 +17,15 @@ public class Note {
     String note;
     Timestamp creationdate;
     int importance;
+    int userId;
 
-    public Note(int id, String title, String note, Object creationdate, int importance) {
+    public Note(int id, String title, String note, Object creationdate, int importance, int userId) {
         this.id = id;
         this.title = title;
         this.note = note;
         this.creationdate = (Timestamp)creationdate;
         this.importance = importance;
+        this.userId = userId;
     }
 
     public int getId() {
@@ -64,6 +66,14 @@ public class Note {
 
     public void setImportance(int importance) {
         this.importance = importance;
+    }
+
+    public int getUserId() {
+        return userId;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
     
 }
