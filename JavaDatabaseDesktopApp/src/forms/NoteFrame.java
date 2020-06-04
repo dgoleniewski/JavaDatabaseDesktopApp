@@ -54,8 +54,11 @@ public class NoteFrame extends javax.swing.JFrame {
                 importanceSpinner.setEnabled(false);
                 saveButton.setEnabled(false);
                 updateButton.setEnabled(true);
+                updateMenuItem.setEnabled(true);
                 newButton.setEnabled(true);
+                newMenuItem.setEnabled(true);
                 deleteButton.setEnabled(true);
+                deleteMenuItem.setEnabled(true);
                 checkPosition();
                 break;
             case addNew:
@@ -66,8 +69,11 @@ public class NoteFrame extends javax.swing.JFrame {
                 nextButton.setEnabled(false);
                 saveButton.setEnabled(true);
                 updateButton.setEnabled(false);
+                updateMenuItem.setEnabled(false);
                 newButton.setEnabled(false);
+                newMenuItem.setEnabled(false);
                 deleteButton.setEnabled(false);
+                deleteMenuItem.setEnabled(false);
                 break;
             case modify:
                 titleTextField.setEnabled(true);
@@ -77,9 +83,17 @@ public class NoteFrame extends javax.swing.JFrame {
                 nextButton.setEnabled(false);
                 saveButton.setEnabled(true);
                 updateButton.setEnabled(false);
+                updateMenuItem.setEnabled(false);
                 newButton.setEnabled(false);
+                newMenuItem.setEnabled(false);
                 deleteButton.setEnabled(false);
+                deleteMenuItem.setEnabled(false);
                 break;
+        }
+        if(notes.isEmpty()){
+            updateButton.setEnabled(false);
+            updateMenuItem.setEnabled(false);
+            deleteMenuItem.setEnabled(false);
         }
     }
     
@@ -126,6 +140,11 @@ public class NoteFrame extends javax.swing.JFrame {
         dateLabel = new javax.swing.JLabel();
         idLabel = new javax.swing.JLabel();
         deleteButton = new javax.swing.JButton();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        newMenuItem = new javax.swing.JMenuItem();
+        updateMenuItem = new javax.swing.JMenuItem();
+        deleteMenuItem = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -186,6 +205,39 @@ public class NoteFrame extends javax.swing.JFrame {
                 deleteButtonActionPerformed(evt);
             }
         });
+
+        jMenu1.setText("File");
+
+        newMenuItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_N, java.awt.event.InputEvent.CTRL_MASK));
+        newMenuItem.setText("New");
+        newMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                newMenuItemActionPerformed(evt);
+            }
+        });
+        jMenu1.add(newMenuItem);
+
+        updateMenuItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_E, java.awt.event.InputEvent.CTRL_MASK));
+        updateMenuItem.setText("Update");
+        updateMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updateMenuItemActionPerformed(evt);
+            }
+        });
+        jMenu1.add(updateMenuItem);
+
+        deleteMenuItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_D, java.awt.event.InputEvent.CTRL_MASK));
+        deleteMenuItem.setText("Delete");
+        deleteMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteMenuItemActionPerformed(evt);
+            }
+        });
+        jMenu1.add(deleteMenuItem);
+
+        jMenuBar1.add(jMenu1);
+
+        setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -255,7 +307,7 @@ public class NoteFrame extends javax.swing.JFrame {
                     .addComponent(newButton))
                 .addGap(18, 18, 18)
                 .addComponent(deleteButton)
-                .addContainerGap(125, Short.MAX_VALUE))
+                .addContainerGap(103, Short.MAX_VALUE))
         );
 
         pack();
@@ -327,6 +379,21 @@ public class NoteFrame extends javax.swing.JFrame {
         setView();
     }//GEN-LAST:event_newButtonActionPerformed
 
+    private void newMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newMenuItemActionPerformed
+        // TODO add your handling code here:
+        newButtonActionPerformed(evt);
+    }//GEN-LAST:event_newMenuItemActionPerformed
+
+    private void updateMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateMenuItemActionPerformed
+        // TODO add your handling code here:
+        updateButtonActionPerformed(evt);
+    }//GEN-LAST:event_updateMenuItemActionPerformed
+
+    private void deleteMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteMenuItemActionPerformed
+        // TODO add your handling code here:
+        updateButtonActionPerformed(evt);
+    }//GEN-LAST:event_deleteMenuItemActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -369,18 +436,23 @@ public class NoteFrame extends javax.swing.JFrame {
     private javax.swing.JButton backButton;
     private javax.swing.JLabel dateLabel;
     private javax.swing.JButton deleteButton;
+    private javax.swing.JMenuItem deleteMenuItem;
     private javax.swing.JLabel idLabel;
     private javax.swing.JSpinner importanceSpinner;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton newButton;
+    private javax.swing.JMenuItem newMenuItem;
     private javax.swing.JButton nextButton;
     private javax.swing.JTextArea noteTextArea;
     private javax.swing.JButton saveButton;
     private javax.swing.JTextField titleTextField;
     private javax.swing.JButton updateButton;
+    private javax.swing.JMenuItem updateMenuItem;
     // End of variables declaration//GEN-END:variables
     private Database db;
     private ArrayList notes;

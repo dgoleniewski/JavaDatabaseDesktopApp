@@ -5,6 +5,8 @@
  */
 package start;
 
+import forms.LoginFrame;
+
 /**
  *
  * @author Goleniewski
@@ -16,6 +18,8 @@ public class Start {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        LoginFrame loginFrame = new LoginFrame();
+        loginFrame.setVisible(true);
     }
     
 }
