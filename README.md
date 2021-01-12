@@ -23,3 +23,8 @@ To setup a project, you need to clone the repository or download it's content an
 * Read note.
 * Update note.
 * Delete note.
+
+## Screenshots
+
+!login(screanshoots/login.png)
+!note(screanshoots/note.png)
