@@ -9,7 +9,7 @@ JavaDatabaseDesktopApp is a student projekt. It allows to save notes for users. 
 ## Technologies
 
 * Apache NetBeans IDE 12.0
-* Java 1.8.0_212
+* Java 14
 * MSSQLServer
 
 ## Setup
