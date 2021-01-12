@@ -26,5 +26,5 @@ To setup a project, you need to clone the repository or download it's content an
 
 ## Screenshots
 
-!login(screanshoots/login.png)
-!note(screanshoots/note.png)
+![login](screanshoots/login.png)
+![note](screanshoots/note.png)
